@@ -29,6 +29,21 @@ This is a simple Express.js template project that uses EJS as the view template 
 
 4. Add this to setting.json in vscode to enable prettier.
 
+5. .env file:
+
+```md
+HOST = "localhost"
+ADMIN_USERNAME = "todoAdmin"
+ADMIN_PASSWORD = "Norofftodo2110"
+DATABASE_NAME = "myTodo"
+DIALECT = "mysql"
+PORT = "3000"
+```
+
+---
+
+visual studio code settings.json
+
 ```bash
    "[javascript]": {
    	"editor.defaultFormatter": "esbenp.prettier-vscode"
