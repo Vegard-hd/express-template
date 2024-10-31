@@ -22,17 +22,21 @@ This is a simple Express.js template project that uses EJS as the view template 
    cd express-template
    ```
 3. Install the dependencies:
+
    ```bash
    npm install
    ```
-4. ```bash
-   {
-     "eslint.format.enable": true,
-     "[javascript]": {
-       "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-     }
-   }
-   ```
+
+4. Add this to setting.json in vscode to enable prettier.
+
+```bash
+   "[javascript]": {
+   	"editor.defaultFormatter": "esbenp.prettier-vscode"
+   },
+   "[html]": {
+   	"editor.defaultFormatter": "esbenp.prettier-vscode"
+   },
+```
 
 ## Usage
 
