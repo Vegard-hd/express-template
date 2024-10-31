@@ -7,6 +7,10 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
+//database setup with sync
+const db = require("./models");
+db.sequelize.sync({ force: false });
+
 var app = express();
 
 // view engine setup
@@ -19,6 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// router endpoint binding
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
