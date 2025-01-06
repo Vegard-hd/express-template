@@ -1,4 +1,4 @@
-const { sequelize } = require("sequelize");
+const { QueryTypes } = require("sequelize");
 const { Op } = require("sequelize");
 class UserService {
   constructor(db) {
@@ -9,27 +9,35 @@ class UserService {
     this.Reservation = db.Reservation;
   }
 
+  // raw SQL query using replacements
+  async rawQuery(name, password) {    
+    return await this.client.query(
+    `
+    SELECT name AS n WHERE n.password = :password AND n.name = :name`,
+    {
+      replacements: { param1: name, param2: password },
+      type: QueryTypes.SELECT,
+      plain: true,
+    }
+  );}
+
   async create(firstName, lastName, username, salt, encryptedPassword) {
-    this.User.create({
+    return await this.User.create({
       FirstName: firstName,
       LastName: lastName,
       Username: username,
       Salt: salt,
       EncryptedPassword: encryptedPassword,
-    })
-      .then((result) => {
-        return result;
-      })
-      .catch((err) => {
-        return err;
-      });
+    });
   }
 
   async getAll() {
-    return this.User.findAll({
+    return await this.User.findAll({
       where: {},
     });
   }
+
+  /* Getting a user using sequelize include / SQL JOIN */
 
   async getOne(userId) {
     return await this.User.findOne({
@@ -45,6 +53,9 @@ class UserService {
       },
     });
   }
+
+  /* Getting a user using sequelize include / SQL JOIN */
+
   async getOneByName(username) {
     return await this.User.findOne({
       where: { username: username },
@@ -64,8 +75,10 @@ class UserService {
       attributes: ["id"],
     });
   }
+
+  /* Deletes a user that has Role NOT "Admin" */
   async deleteUser(userId) {
-    return this.User.destroy({
+    return await this.User.destroy({
       where: {
         id: userId,
         Role: {
