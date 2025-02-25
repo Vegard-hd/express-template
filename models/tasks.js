@@ -4,8 +4,8 @@ module.exports = (sequelize, Sequelize) => {
     {
       name: Sequelize.DataTypes.STRING,
       description: Sequelize.DataTypes.STRING,
-      completed: Sequelize.DataTypes.BOOLEAN,
-      inProgress: Sequelize.DataTypes.BOOLEAN,
+      completed: { type: Sequelize.DataTypes.BOOLEAN, defaultValue: 0 },
+      inProgress: { type: Sequelize.DataTypes.BOOLEAN, defaultValue: 0 },
     },
     {
       underscored: true,

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/navbar.ejs') %>
+    <section class="container-sm text-center">
+      <%- include('./partials/createTask.ejs') %>
+    </section>
+    <div class="container-sm mt-5 text-center">
+      <h1 class="mb-4">Tasks</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Task</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Task 1</td>
+            <td>Incomplete</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Task 2</td>
+            <td>Complete</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Task 3</td>
+            <td>Incomplete</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <script src="/js/bootstrap.bundle.min.js"></script>
+</html>

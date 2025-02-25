@@ -1,0 +1,25 @@
+<form action="/tasks" method="POST" class="container mt-5">
+  <h1 class="mb-4">Create a new task</h1>
+  <div class="mb-3">
+    <label for="taskName" class="form-label">Task name</label>
+    <input
+      name="taskname"
+      type="text"
+      class="form-control"
+      id="taskName"
+      aria-describedby="taskHelp"
+    />
+    <div class="form-text">The tame of the task to add</div>
+  </div>
+  <div class="mb-3">
+    <label for="taskDescription" class="form-label">Description</label>
+    <input
+      name="taskdescription"
+      type="text"
+      class="form-control"
+      id="taskDescription"
+    />
+    <div class="form-text">The description of the task</div>
+  </div>
+  <button type="submit" class="btn btn-primary mb-5">Create!</button>
+</form>

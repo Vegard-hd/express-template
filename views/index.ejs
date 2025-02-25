@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
-  <body class="text-center">
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <p>Using bootstrap 5</p>
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/navbar.ejs') %>
+    <main class="text-center fs-5">
+      <section>
+        <h1><%= title %></h1>
+        <p>Welcome to <%= title %></p>
+      </section>
+      <section class="mt-5">
+        <p>
+          Go to /tasks endpoint <a href="/tasks">here</a> to manage users task
+        </p>
+      </section>
+    </main>
   </body>
   <script src="/js/bootstrap.bundle.min.js"></script>
 </html>

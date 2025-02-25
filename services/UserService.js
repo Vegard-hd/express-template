@@ -3,7 +3,7 @@ const { Op } = require("sequelize");
 class UserService {
   constructor(db) {
     this.client = db.sequelize;
-    this.User = db.User;
+    this.user = db.user;
   }
 
   // raw SQL query using replacements
@@ -19,68 +19,36 @@ class UserService {
     );
   }
 
-  async create(firstName, lastName, username, salt, encryptedPassword) {
-    return await this.User.create({
-      FirstName: firstName,
-      LastName: lastName,
-      Username: username,
-      Salt: salt,
-      EncryptedPassword: encryptedPassword,
+  async create(firstName, lastName, username, salt, encryptedPassword, role) {
+    return await this.user.create({
+      first_name: firstName,
+      last_name: lastName,
+      username: username,
+      salt: salt,
+      encrypted_password: encryptedPassword,
+      role: role,
     });
   }
 
   async getAll() {
-    return await this.User.findAll({
+    return await this.user.findAll({
       where: {},
     });
   }
 
-  /* Getting a user using sequelize include / SQL JOIN */
-
-  // async getOne(userId) {
-  //   return await this.User.findOne({
-  //     where: { id: userId },
-  //     include: {
-  //       model: this.Room,
-  //       through: {
-  //         attributes: ["StartDate", "EndDate"],
-  //       },
-  //       include: {
-  //         model: this.Hotel,
-  //       },
-  //     },
-  //   });
-  // }
-
-  // example of executing a join using sequelize
-
-  /*   async getOneByName(username) {
-    return await this.User.findOne({
-      where: { username: username },
-      include: {
-        model: this.Room,
-        through: {
-          attributes: ["StartDate", "EndDate"],
-        },
-        include: {
-          model: this.Hotel,
-        },
-      },
-    });
-  } */
   async getArrOfId() {
-    return await this.User.findAll({
+    return await this.user.findAll({
       attributes: ["id"],
     });
   }
 
   /* Deletes a user that has Role NOT "Admin" */
   async deleteUser(userId) {
-    return await this.User.destroy({
+    return await this.user.destroy({
       where: {
         id: userId,
-        Role: {
-          [Op.not]: "Admin",
+        role: {
+          [Op.not]: "admin",
         },
       },
     });
