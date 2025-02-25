@@ -23,7 +23,7 @@ class TaskService {
     return await this.task.create({
       name: name,
       description: description,
-      user_id: userId, //FK to user
+      userId: 1, //FK to user
     });
   }
 

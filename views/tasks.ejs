@@ -12,26 +12,27 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Task</th>
-            <th scope="col">Status</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Completed</th>
+            <th scope="col">In progress</th>
+            <th scope="col">User id</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Task 1</td>
-            <td>Incomplete</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Task 2</td>
-            <td>Complete</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Task 3</td>
-            <td>Incomplete</td>
-          </tr>
+          <% if (data.length >= 1) { %>
+            <% data.forEach(e => { %>
+              <tr>
+                <th scope="row"><%- e?.dataValues?.id %></th>
+                <td><%- e?.dataValues?.name %></td>
+                <td><%- e?.dataValues?.description %></td>
+                <td><%- e?.dataValues?.completed %></td>
+                <td><%- e?.dataValues?.inProgress %></td>
+                <td><%- e?.dataValues?.userId %></td>
+              </tr>
+              <% }) %>
+           
+          <% } %>
         </tbody>
       </table>
     </div>

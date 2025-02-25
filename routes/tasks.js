@@ -5,15 +5,17 @@ const TasksService = require("../services/TaskService");
 const taskService = new TasksService(db);
 /* GET users listing. */
 router.post("/", async function (req, res, next) {
-  // TODO: get data from request and create task in database
-  // const {taskname, taskdescription, taskuserid} = req.body;
-  // const createTask = await taskService.create("Task", "Task description", 1);
-  res.render("tasks", { data: "pass in data from the database" });
+  const { taskname, taskdescription } = req.body;
+  await taskService.create(taskname, taskdescription);
+  const data = await taskService.getAll();
+  res.render("tasks", { data: data });
 });
 router.get("/", async function (req, res, next) {
   // TODO: pass the data to frontend
-  // const data = await taskService.getAll();
-  res.render("tasks", { data: "pass in data from the database" });
+  const data = await taskService.getAll();
+  console.log(data[0]?.dataValues);
+  console.log(data?.task?.dataValues?.name);
+  res.render("tasks", { data: data });
 });
 
 module.exports = router;
