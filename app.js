@@ -9,7 +9,7 @@ var usersRouter = require("./routes/users");
 
 //database setup with sync
 const db = require("./models");
-db.sequelize.sync({ force: false });
+db.sequelize.sync({ force: true });
 
 var app = express();
 

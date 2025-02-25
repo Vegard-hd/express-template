@@ -1,35 +1,32 @@
 module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define(
-    "User",
+  const user = sequelize.define(
+    "user",
     {
-      FirstName: Sequelize.DataTypes.STRING,
-      LastName: Sequelize.DataTypes.STRING,
-      Username: {
+      first_name: Sequelize.DataTypes.STRING,
+      last_name: Sequelize.DataTypes.STRING,
+      username: {
         type: Sequelize.DataTypes.STRING,
         allowNull: false,
         unique: true,
       },
-      EncryptedPassword: {
+      encrypted_password: {
         type: Sequelize.DataTypes.BLOB,
         allowNull: false,
       },
-      Salt: {
+      salt: {
         type: Sequelize.DataTypes.BLOB,
         allowNull: false,
       },
-      Role: {
+      role: {
         type: Sequelize.DataTypes.STRING,
-        defaultValue: "User",
+        defaultValue: "user",
       },
     },
-    {
-      timestamps: false,
-    },
+    { underscored: true, timestamps: false },
   );
-  User.associate = function (models) {
+  user.associate = function (models) {
     //setup associations for user here
-    // User.belongsToMany(models.Hotel, { through: models.Rate });
-    // User.belongsToMany(models.Room, { through: models.Reservation });
+    user.hasOne(models.task);
   };
-  return User;
+  return user;
 };
