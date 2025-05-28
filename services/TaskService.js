@@ -1,5 +1,4 @@
 const { QueryTypes } = require("sequelize");
-const { Op } = require("sequelize");
 class TaskService {
   constructor(db) {
     this.client = db.sequelize;
@@ -19,7 +18,7 @@ class TaskService {
     );
   }
 
-  async create(name, description, userId) {
+  async create(name, description) {
     return await this.task.create({
       name: name,
       description: description,
