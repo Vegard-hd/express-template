@@ -22,7 +22,11 @@ module.exports = async function createAdminUser() {
         await userService
           .create("admin", "admin", "admin", salt, hashedPassword, "admin")
           .then((data) => {
-            resolve(data);
+            if (data) {
+              resolve(data);
+            } else {
+              reject("userService failed to return data in createAdminUser");
+            }
           })
           .catch((e) => {
             reject(e);

@@ -60,6 +60,7 @@ app.use("/tasks", tasksRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
+  console.warn("forward error middleware called");
   next(createError(404));
 });
 
