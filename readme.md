@@ -71,9 +71,17 @@ FLUSH PRIVILEGES;
 ## Usage
 
 1. Start the development server:
+
    ```bash
    npm start
    ```
+
+   or dev script for automatic restarts.
+
+   ```bash
+   npm run dev
+   ```
+
 2. Open your browser and go to `http://localhost:3000` to see the application in action.
 3. run:
 
