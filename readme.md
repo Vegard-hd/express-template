@@ -40,7 +40,7 @@ PORT="3000"
 
 ---
 
-5. ### Requires a MySQL database running at localhost; change _HOST_ .env variable to use with external database. Change _dialect_ .env variable to use with another SQL datbase.
+5. Ensure a MySQL database is running on `localhost`. To use an external database, update `HOST` in your `.env` file. To use a different SQL database (e.g., PostgreSQL), set `DIALECT` in `.env` accordingly and install the required npm driver (for example: `mysql2` for MySQL, `pg` and `pg-hstore` for PostgreSQL, or `sqlite3` for SQLite).
 
 6. ### Create the user and database on the MySQL db to complete the setup.
 
